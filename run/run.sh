@@ -7,6 +7,12 @@ export PATH
 # dir bug fix
 cd `dirname $0`
 
+# check root, don't use root to run
+if [[ "$(whoami)" = "root" ]]; then
+    echo "please don't use root run this script!" >&2
+    exit 1
+fi 
+
 # JDK
 JDK_FILE_PATH=""
 # 配置文件
