@@ -26,3 +26,11 @@ bash ./run.sh start
 ```shell
 bash ./run.sh stop
 ```
+## set devault env to run spring boot without active arg
+```shell
+cat > /etc/profile.d/spring-boot-active-env.sh <<EOF
+export SPRING_BOOT_ACTIVE_ENV=dev
+EOF
+source /etc/profile
+```
+and use bash ./run.sh start application,the active is ${SPRING_BOOT_ACTIVE_ENV}.

@@ -27,7 +27,7 @@ VM_OPTIONS=""
 JAR_FILE_PATH=""
 
 default_jdk_file_path(){
-    echo "/data/service/jdk/bin"
+    echo "/data/service/java/bin"
 }
 
 default_active_profiles(){
@@ -68,6 +68,9 @@ default_vm_options(){
 load_params(){
     if [ -z "${JDK_FILE_PATH}" ]; then
         JDK_FILE_PATH=`default_jdk_file_path`
+    fi
+    if [ -z "${ACTIVE_PROFILES}" ] && [ ! -z ${SPRING_BOOT_ACTIVE_ENV} ]; then
+        ACTIVE_PROFILES=${SPRING_BOOT_ACTIVE_ENV}
     fi
     if [ -z "${ACTIVE_PROFILES}" ]; then
         ACTIVE_PROFILES=`default_active_profiles`
