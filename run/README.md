@@ -4,7 +4,7 @@ fast run spring boot application
 1. don't use root run this script.
 2. recommond to use have sudo permission user run this script.
 3. sysvinit and systemdint use for when system startup and auto start application, not neccessary!
-4. so, without sysvinit and systemdinit, normal user can run this script.
+4. so, without sysvinit and systemdinit, this script can be run by any normal user.
 ## use help
 ```shell
 Usage: bash ./run.sh [start|stop|restart|status|help|...] [--active="dev"]...
