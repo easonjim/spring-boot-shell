@@ -1,5 +1,10 @@
 # spring boot run shell
-fast run spring boot application
+fast run spring boot application  
+### tip
+1. don't use root run this script.
+2. recommond to use have sudo permission user run this script.
+3. sysvinit and systemdint use for when system startup and auto start application, not neccessary!
+4. so, without sysvinit and systemdinit, normal user can run this script.
 ## use help
 ```shell
 Usage: bash ./run.sh [start|stop|restart|status|help|...] [--active="dev"]...
@@ -21,7 +26,7 @@ sysvinit-create                :create sysvinit script for application fast star
 sysvinit-update                :create sysvinit script for application fast start, run this script user must have sudo permission!
 sysvinit-delte                 :create sysvinit script for application fast start, run this script user must have sudo permission!
    -arg:[--sysvinit-name]      :sysvinit service name, default: application.jar.dev
-   -arg:[--sysvinit-run-level] :sysvinit script chkconfig run level, default: 2345 70 30
+   -arg:[--sysvinit-run-level] :sysvinit script chkconfig run level, default: 345 70 30
    -arg:[--sysvinit-run-user]  :sysvinit script application run user, default: www-data
 ```
 #### the jvm default args, so you can use command args --vm="" set this to change default
@@ -41,6 +46,10 @@ sysvinit-delte                 :create sysvinit script for application fast star
 -XX:+UseCMSInitiatingOccupancyOnly \
 -XX:CMSInitiatingOccupancyFraction=70 
 ```
+#### the jdk default path
+```shell
+/data/service/java/bin/
+```
 ## start application
 ```shell
 bash ./run.sh start --active="test"
@@ -57,17 +66,37 @@ EOF
 source /etc/profile
 ```
 and use bash ./run.sh start application,the active is ${SPRING_BOOT_ACTIVE_ENV}.
-## register sysvinit script in system when system startup after auto start this application
-tip: register this script user must have sudo permission!
+## (SysV) register sysvinit script in system when system startup after auto start this application
+tip: register this script user must have sudo permission! The system first time startup use root run this service, but run user is your setting like this www-data. So, if use www-data user run this service you must use sudo!
 ```shell
+# run this script use is www-data
 # create 
 bash ./run.sh sysvinit-create --active="test" --sysvinit-run-user="www-data"
 # chkconfig service, like this demo then service is: application.jar.test
-chkconfig
+chkconfig --list application.jar.test
 # start 
 sudo service application.jar.test start 
 # status
 sudo service application.jar.test status
 # stop
-sudo service application.jar.test restart
+sudo service stop application.jar.test
+# restart
+sudo service restart application.jar.test
+```
+## (Systemd) register systemd script in system when system startup after auto start this application
+tip: register this script user must have sudo permission! The system first time startup use root run this service, but run user is your setting like this www-data. So, if use www-data user run this service you must use sudo!
+```shell
+# run this script use is www-data
+# create 
+bash ./run.sh systemdinit-create --active="test" --systemdinit-run-user="www-data"
+# systemctl service, like this demo then service is: application.jar.test
+systemctl list-unit-files | grep application.jar.test
+# start 
+sudo systemctl start application.jar.test
+# status
+sudo systemctl status application.jar.test
+# stop
+sudo systemctl stop application.jar.test
+# restart
+sudo systemctl restart application.jar.test
 ```
