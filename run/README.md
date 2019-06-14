@@ -8,26 +8,33 @@ fast run spring boot application
 ## use help
 ```shell
 Usage: bash ./run.sh [start|stop|restart|status|help|...] [--active="dev"]...
-help                           :print this help info
-start                          :start application
-stop                           :stop application
-restart                        :restart application
-status                         :application status
-show-start-log                 :application start log
-show-stop-log                  :application stop log
-show-start-error-log           :application start error log
-   -arg:[--jdk]                :jdk file path,default: /data/service/java/bin
-   -arg:[--active]             :spring boot active profiles, default: dev
-   -arg:[--active="no"]        :spring boot start for no active profiles
-   -arg:[--pid]                :application pid file path, default: application.jar.pid
-   -arg:[--vm]                 :java vm options, default:  -server -Xmx1g -Xms1g -Xmn512m -XX:PermSize=128m -Xss256k -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70
-   -arg:[--jar]                :application jar file path, default: application.jar
-sysvinit-create                :create sysvinit script for application fast start, run this script user must have sudo permission!
-sysvinit-update                :create sysvinit script for application fast start, run this script user must have sudo permission!
-sysvinit-delte                 :create sysvinit script for application fast start, run this script user must have sudo permission!
-   -arg:[--sysvinit-name]      :sysvinit service name, default: application.jar.dev
-   -arg:[--sysvinit-run-level] :sysvinit script chkconfig run level, default: 345 70 30
-   -arg:[--sysvinit-run-user]  :sysvinit script application run user, default: www-data
+help                              :print this help info
+start                             :start application
+stop                              :stop application
+restart                           :restart application
+status                            :application status
+show-start-log                    :application start log
+show-stop-log                     :application stop log
+show-start-error-log              :application start error log
+   -arg:[--jdk]                   :jdk file path,default: /data/service/java/bin
+   -arg:[--active]                :spring boot active profiles, default: dev
+   -arg:[--active="no"]           :spring boot start for no active profiles
+   -arg:[--pid]                   :application pid file path, default: test.jar.pid
+   -arg:[--vm]                    :java vm options, default:  -server -Xmx1g -Xms1g -Xmn512m -XX:PermSize=128m -Xss256k -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70
+   -arg:[--jar]                   :application jar file path, default: test.jar
+sysvinit-create                   :create sysvinit script for application fast start, run this script user must have sudo permission!
+sysvinit-update                   :update sysvinit script for application fast start, run this script user must have sudo permission!
+sysvinit-delete                   :delete sysvinit script for application fast start, run this script user must have sudo permission!
+sysvinit-show                     :show sysvinit service name
+   -arg:[--sysvinit-name]         :sysvinit service name, default: test.jar.dev
+   -arg:[--sysvinit-run-level]    :sysvinit script chkconfig run level, default: 345 70 30
+   -arg:[--sysvinit-run-user]     :sysvinit script application run user, default: www-data
+systemdinit-create                :create systemdinit script for application fast start, run this script user must have sudo permission!
+systemdinit-update                :update systemdinit script for application fast start, run this script user must have sudo permission!
+systemdinit-delete                :delete systemdinit script for application fast start, run this script user must have sudo permission!
+systemdinit-show                  :show systemdinit service name
+   -arg:[--systemdinit-name]      :systemdinit service name, default: test.jar.dev
+   -arg:[--systemdinit-run-user]  :systemdinit script application run user, default: www-data
 ```
 #### the jvm default args, so you can use command args --vm="" set this to change default
 ```shell
