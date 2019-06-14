@@ -1,6 +1,6 @@
 # spring boot run shell
 fast run spring boot application  
-### tip
+### tips
 1. don't use root run this script.
 2. recommond to use have sudo permission user run this script.
 3. sysvinit and systemdint use for when system startup and auto start application, not neccessary!
@@ -74,7 +74,7 @@ source /etc/profile
 ```
 and use bash ./run.sh start application,the active is ${SPRING_BOOT_ACTIVE_ENV}.
 ## (SysV) register sysvinit script in system when system startup after auto start this application
-tip: register this script user must have sudo permission! The system first time startup use root run this service, but run user is your setting like this www-data. So, if use www-data user run this service you must use sudo!
+tips: register this script user must have sudo permission! The system first time startup use root run this service, but run user is your setting like this www-data. So, if use www-data user run this service you must use sudo!
 ```shell
 # run this script use is www-data
 # create 
@@ -91,7 +91,7 @@ sudo service stop application.jar.test
 sudo service restart application.jar.test
 ```
 ## (Systemd) register systemd script in system when system startup after auto start this application
-tip: register this script user must have sudo permission! The system first time startup use root run this service, but run user is your setting like this www-data. So, if use www-data user run this service you must use sudo!
+tips: register this script user must have sudo permission! The system first time startup use root run this service, but run user is your setting like this www-data. So, if use www-data user run this service you must use sudo!
 ```shell
 # run this script use is www-data
 # create 
