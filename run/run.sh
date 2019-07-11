@@ -49,7 +49,7 @@ default_active_profiles(){
 }
 
 default_jar_file_path(){
-    echo `ls -t | grep "**.jar$" | head -n 1`
+    echo `ls -rt | grep "**.jar$" | head -n 1`
 }
 
 default_pid_file_path(){
@@ -112,7 +112,7 @@ load_run_command(){
 }
 
 load_stop_command(){
-    echo "kill `cat logs_run_sh/${PID_FILE_PATH}`"
+    echo "kill `cat logs_run_sh/${PID_FILE_PATH}` && rm logs_run_sh/${PID_FILE_PATH}"
 }
 
 check_application_running(){
